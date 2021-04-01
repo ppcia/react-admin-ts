@@ -2,6 +2,6 @@
 export interface ResponseValue<T> {
   flag?: boolean
   status?: number
-  message?: string
+  msg?: string
   data?: T
 }

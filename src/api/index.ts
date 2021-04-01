@@ -8,12 +8,12 @@ import { ReqMethodEnum } from "./ReqMethodEnum"
 
 // 登录接口
 export const reqLogin = (
-  name: string,
+  username: string,
   password: string
 ): Promise<ResponseValue<UserModel>> =>
   ajax<ResponseValue<UserModel>>(
-    "/login",
-    { name, password },
+    "/api/login",
+    { username, password },
     ReqMethodEnum.POST
   )
 

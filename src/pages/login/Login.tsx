@@ -1,14 +1,22 @@
 import { Component } from "react"
-import { Form, Input, Button } from "antd"
+import { Form, Input, Button, message } from "antd"
 import { UserOutlined, LockOutlined } from "@ant-design/icons"
 import classNames from "classnames"
 
 import loginStyle from "./login.module.scss"
 import { RuleObject, StoreValue } from "rc-field-form/lib/interface"
+import { reqLogin } from "../../api"
 
 export default class Login extends Component {
-  onFinish = (values: Object) => {
-    console.log("Received values of form: ", values)
+  onFinish = async (values: any) => {
+    const {username, password} = values
+    const result = await reqLogin(username, password)
+    console.log(result)
+    if(result.status===0){
+      message.success('登录成功')
+    }else{
+      message.error(result.msg)
+    }
   }
 
   // 自定义用户名验证
